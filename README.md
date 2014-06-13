@@ -5,8 +5,8 @@
 ![sample](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/docs/sample.png)
 
 ###Downloads
->* [android-linear-line-wrap-layout-1.0.0.jar](https://github.com/xiaopansky/HappyBarcode/raw/master/releases/android-linear-line-wrap-layout-1.0.0.jar)
->* [android-linear-line-wrap-layout-1.0.0-with-src.jar](https://github.com/xiaopansky/HappyBarcode/raw/master/releases/android-linear-line-wrap-layout-1.0.0-with-src.jar)
+>* [android-linear-line-wrap-layout-1.0.0.jar](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/releases/android-linear-line-wrap-layout-1.0.0.jar)
+>* [android-linear-line-wrap-layout-1.0.0-with-src.jar](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/releases/android-linear-line-wrap-layout-1.0.0-with-src.jar)
 
 ####示例图源码：
 ```xml
