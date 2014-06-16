@@ -1,4 +1,4 @@
-#![Logo](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/app/src/res/drawable-mdpi/ic_launcher.png) LinearLineWrapLayout
+#![Logo](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/app/src/main/res/drawable-mdpi/ic_launcher.png) LinearLineWrapLayout
 
 这是Android上的一个线性自动换行布局控件
 
