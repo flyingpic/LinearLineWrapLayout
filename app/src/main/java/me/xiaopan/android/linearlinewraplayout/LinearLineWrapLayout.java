@@ -44,105 +44,89 @@ public class LinearLineWrapLayout extends ViewGroup{
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-        if(widthMode == MeasureSpec.EXACTLY && heightMode == MeasureSpec.EXACTLY){
-            setMeasuredDimension(widthSize, heightSize);
-            return;
-        }
-
-        if(widthMode == MeasureSpec.EXACTLY || widthMode == MeasureSpec.AT_MOST){
-            measureWidthByLimited(widthMeasureSpec, heightMeasureSpec, widthSize, heightMode, heightSize);
-        }else{
-            measureWidthByUnlimited(widthMeasureSpec, heightMeasureSpec, heightMode, heightSize);
-        }
+        measure(widthMeasureSpec, heightMeasureSpec, widthMode, widthSize, heightMode, heightSize);
     }
 
-    private void measureWidthByLimited(int widthMeasureSpec, int heightMeasureSpec, int widthSize, int heightMode, int heightSize){
-        int needHeight = 0; // 实际需要的高度
-        int rowWidth = 0;  // 实际需要的宽度
-        int rowHeight = 0;
+    private void measure(int widthMeasureSpec, int heightMeasureSpec, int widthMode, int widthSize, int heightMode, int heightSize){
         int availableWidth = widthSize - getPaddingLeft() - getPaddingRight();   // 可用宽度
+        int parentViewHeight = 0; // 实际需要的高度
+        int rowWidth = 0;  // 记录行宽
+        int rowHeight = 0;  // 记录行高
+        int childViewWidth; // 记录子View宽度
+        int childViewHeight;    // 记录子View高度
+        View childView;
         LinkedList<View> rowViews = new LinkedList<View>();
-        View child;
+        boolean widthSizeUnspecified = widthMode == MeasureSpec.UNSPECIFIED;
         for (int position = 0; position < getChildCount(); position++) {
-            child = getChildAt(position);
-            if(child.getVisibility() == View.GONE) continue;
+            childView = getChildAt(position);
+            if(childView.getVisibility() == View.GONE) continue;
 
             // 测量并计算当前View需要的宽高
-            measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
-            LayoutParams lp = (LayoutParams) child.getLayoutParams();
-            int currentChildNeedWidth = lp.leftMargin+child.getMeasuredWidth()+lp.rightMargin;
-            int currentChildNeedHeight = lp.topMargin+child.getMeasuredHeight()+lp.bottomMargin;
+            measureChildWithMargins(childView, widthMeasureSpec, 0, heightMeasureSpec, 0);
+            LayoutParams lp = (LayoutParams) childView.getLayoutParams();
+            childViewWidth = lp.leftMargin+childView.getMeasuredWidth()+lp.rightMargin;
+            childViewHeight = lp.topMargin+childView.getMeasuredHeight()+lp.bottomMargin;
 
-            // 如果加上当前View就超过了最大宽度，那么就处理之前的View
-            if(rowWidth + currentChildNeedWidth > availableWidth){
-                if(adjustChildWidthWithParent){
-                    adjustChildWidthWithParent(rowViews, availableWidth, widthMeasureSpec, heightMeasureSpec);
+            // 如果宽度方面是包括，那么就记录总宽度，否则就换行并调整子Vie的宽度
+            if(widthSizeUnspecified){
+                rowWidth += childViewWidth;
+                // 更新行高
+                if(childViewHeight > parentViewHeight){
+                    parentViewHeight = childViewHeight;
                 }
-                rowViews.clear();
-                rowWidth = 0;   //  清空行宽
-                needHeight += rowHeight;    // 增加View高度
-                rowHeight = 0;  // 清空行高
-            }
+            }else{
+                // 如果宽度方面加上当前View就超过了可用宽度
+                if(rowWidth + childViewWidth > availableWidth){
+                    // 就调整之前的View的宽度以充满
+                    if(adjustChildWidthWithParent){
+                        adjustChildWidthWithParent(rowViews, availableWidth, widthMeasureSpec, heightMeasureSpec);
+                    }
+                    rowViews.clear();
+                    rowWidth = 0;   //  清空行宽
+                    parentViewHeight += rowHeight;    // 增加View高度
+                    rowHeight = 0;  // 清空行高
+                }
 
-            rowViews.add(child);
-            rowWidth += currentChildNeedWidth;  // 增加行宽
-            if(currentChildNeedHeight > rowHeight){ // 更新行高
-                rowHeight = currentChildNeedHeight;
+                rowViews.add(childView);
+                rowWidth += childViewWidth;  // 增加行宽
+
+                // 更新行高
+                if(childViewHeight > rowHeight){
+                    rowHeight = childViewHeight;
+                }
             }
         }
 
-        if(!rowViews.isEmpty()){
+        if(!widthSizeUnspecified && !rowViews.isEmpty()){
+            // 就调整剩余的View的宽度以充满
             if(adjustChildWidthWithParent){
                 adjustChildWidthWithParent(rowViews, availableWidth, widthMeasureSpec, heightMeasureSpec);
             }
             rowViews.clear();
-            needHeight += rowHeight;    // 增加View高度
+            parentViewHeight += rowHeight;    // 增加View高度
         }
 
+        int finalWidth = 0;
         int finalHeight = 0;
-        switch(heightMode){
+        switch (widthMode){
+            case MeasureSpec.EXACTLY :
+            case MeasureSpec.AT_MOST:
+                finalWidth = widthSize;
+                break;
+            case MeasureSpec.UNSPECIFIED:
+                finalWidth = rowWidth + getPaddingLeft() + getPaddingRight();
+                break;
+        }
+        switch (heightMode){
             case MeasureSpec.EXACTLY :
                 finalHeight = heightSize;
                 break;
             case MeasureSpec.AT_MOST:
             case MeasureSpec.UNSPECIFIED:
-                finalHeight = needHeight + getPaddingTop() + getPaddingBottom();
+                finalHeight = parentViewHeight + getPaddingTop() + getPaddingBottom();
                 break;
         }
-        setMeasuredDimension(widthSize, finalHeight);
-    }
-
-    private void measureWidthByUnlimited(int widthMeasureSpec, int heightMeasureSpec, int heightMode, int heightSize){
-        int rowWidth = 0;  // 实际需要的宽度
-        int rowHeight = 0;
-        View child;
-        for (int position = 0; position < getChildCount(); position++) {
-            child = getChildAt(position);
-            if(child.getVisibility() == View.GONE) continue;
-
-            // 测量并计算当前View需要的宽高
-            measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
-            MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
-            int currentChildNeedWidth = child.getMeasuredWidth()+lp.leftMargin+lp.rightMargin;
-            int currentChildNeedHeight = child.getMeasuredHeight()+lp.topMargin+lp.bottomMargin;
-
-            rowWidth += currentChildNeedWidth;  // 增加行宽
-            if(currentChildNeedHeight > rowHeight){ // 更新行高
-                rowHeight = currentChildNeedHeight;
-            }
-        }
-        rowWidth += getPaddingLeft() + getPaddingRight();
-        int finalHeight = 0;
-        switch(heightMode){
-            case MeasureSpec.EXACTLY :
-                finalHeight = heightSize;
-                break;
-            case MeasureSpec.AT_MOST:
-            case MeasureSpec.UNSPECIFIED:
-                finalHeight = rowHeight + getPaddingTop() + getPaddingBottom();
-                break;
-        }
-        setMeasuredDimension(rowWidth, finalHeight);
+        setMeasuredDimension(finalWidth, finalHeight);
     }
 
     /**

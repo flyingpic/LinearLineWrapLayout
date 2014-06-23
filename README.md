@@ -4,10 +4,6 @@
 
 ![sample](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/docs/sample.png)
 
-###Downloads
->* [android-linear-line-wrap-layout-1.0.0.jar](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/releases/android-linear-line-wrap-layout-1.0.0.jar)
->* [android-linear-line-wrap-layout-1.0.0-with-src.jar](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/releases/android-linear-line-wrap-layout-1.0.0-with-src.jar)
-
 ####示例图源码：
 ```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -187,6 +183,15 @@
     </me.xiaopan.android.linearlinewraplayout.KeywordContainer>
 </LinearLayout>
 ```
+
+###Downloads
+>* [android-linear-line-wrap-layout-1.0.1.jar](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/releases/android-linear-line-wrap-layout-1.0.1.jar)
+>* [android-linear-line-wrap-layout-1.0.1-with-src.jar](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/releases/android-linear-line-wrap-layout-1.0.1-with-src.jar)
+
+###Change Log
+#### 1.0.1
+>* 优化测量逻辑
+>* 修复当明确指定宽高时，不显示子View的BUG
 
 ##License
 ```java
