@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package me.xiaopan.android.linearlinewraplayout.sample;
+package me.xiaopan.android.linearlinewraplayout;
 
 import android.app.Activity;
 import android.os.Bundle;

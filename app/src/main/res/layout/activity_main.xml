@@ -10,7 +10,7 @@
         android:text="线性自动换行布局："
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"/>
-    <me.xiaopan.android.linearlinewraplayout.LinearLineWrapLayout
+    <me.xiaopan.android.view.LinearLineWrapLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/panel_normal"
@@ -78,7 +78,7 @@
             android:textColor="@android:color/white"
             android:padding="8dp"
             android:layout_margin="4dp"/>
-    </me.xiaopan.android.linearlinewraplayout.LinearLineWrapLayout>
+    </me.xiaopan.android.view.LinearLineWrapLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
         android:text="2.可监听子View的点击事件"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp"/>
-    <me.xiaopan.android.linearlinewraplayout.KeywordContainer
+    <me.xiaopan.android.view.KeywordContainer
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/panel_normal"
@@ -173,5 +173,5 @@
             android:textColor="@android:color/white"
             android:padding="8dp"
             android:layout_margin="4dp"/>
-    </me.xiaopan.android.linearlinewraplayout.KeywordContainer>
+    </me.xiaopan.android.view.KeywordContainer>
 </LinearLayout>

@@ -17,7 +17,7 @@
         android:text="线性自动换行布局："
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"/>
-    <me.xiaopan.android.linearlinewraplayout.LinearLineWrapLayout
+    <me.xiaopan.android.view.LinearLineWrapLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/panel_normal"
@@ -85,7 +85,7 @@
             android:textColor="@android:color/white"
             android:padding="8dp"
             android:layout_margin="4dp"/>
-    </me.xiaopan.android.linearlinewraplayout.LinearLineWrapLayout>
+    </me.xiaopan.android.view.LinearLineWrapLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
         android:text="2.可监听子View的点击事件"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp"/>
-    <me.xiaopan.android.linearlinewraplayout.KeywordContainer
+    <me.xiaopan.android.view.KeywordContainer
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/panel_normal"
@@ -180,15 +180,18 @@
             android:textColor="@android:color/white"
             android:padding="8dp"
             android:layout_margin="4dp"/>
-    </me.xiaopan.android.linearlinewraplayout.KeywordContainer>
+    </me.xiaopan.android.view.KeywordContainer>
 </LinearLayout>
 ```
 
 ###Downloads
->* [android-linear-line-wrap-layout-1.0.1.jar](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/releases/android-linear-line-wrap-layout-1.0.1.jar)
->* [android-linear-line-wrap-layout-1.0.1-with-src.jar](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/releases/android-linear-line-wrap-layout-1.0.1-with-src.jar)
+>* [android-linear-line-wrap-layout-1.0.2.jar](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/releases/android-linear-line-wrap-layout-1.0.2.jar)
+>* [android-linear-line-wrap-layout-1.0.2-with-src.jar](https://github.com/xiaopansky/LinearLineWrapLayout/raw/master/releases/android-linear-line-wrap-layout-1.0.2-with-src.jar)
 
 ###Change Log
+#### 1.0.2
+>* 包名由me.xiaopan.android.linearlinewraplayout改为me.xiaopan.android.view
+
 #### 1.0.1
 >* 优化测量逻辑
 >* 修复当明确指定宽高时，不显示子View的BUG

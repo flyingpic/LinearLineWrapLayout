@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package me.xiaopan.android.linearlinewraplayout;
+package me.xiaopan.android.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
