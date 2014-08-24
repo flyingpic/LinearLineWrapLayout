@@ -17,7 +17,7 @@
         android:text="线性自动换行布局："
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"/>
-    <me.xiaopan.android.view.LinearLineWrapLayout
+    <me.xiaopan.android.widget.LinearLineWrapLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/panel_normal"
@@ -85,7 +85,7 @@
             android:textColor="@android:color/white"
             android:padding="8dp"
             android:layout_margin="4dp"/>
-    </me.xiaopan.android.view.LinearLineWrapLayout>
+    </me.xiaopan.android.widget.LinearLineWrapLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
         android:text="2.可监听子View的点击事件"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp"/>
-    <me.xiaopan.android.view.KeywordContainer
+    <me.xiaopan.android.widget.KeywordContainer
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/panel_normal"
@@ -180,7 +180,7 @@
             android:textColor="@android:color/white"
             android:padding="8dp"
             android:layout_margin="4dp"/>
-    </me.xiaopan.android.view.KeywordContainer>
+    </me.xiaopan.android.widget.KeywordContainer>
 </LinearLayout>
 ```
 
@@ -190,7 +190,7 @@
 
 ###Change Log
 #### 1.0.2
->* 包名由me.xiaopan.android.linearlinewraplayout改为me.xiaopan.android.view
+>* 包名由me.xiaopan.android.linearlinewraplayout改为me.xiaopan.android.widget
 
 #### 1.0.1
 >* 优化测量逻辑

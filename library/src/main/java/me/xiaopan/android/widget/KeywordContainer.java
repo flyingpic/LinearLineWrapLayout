@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package me.xiaopan.android.view;
+package me.xiaopan.android.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

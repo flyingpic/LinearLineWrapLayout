@@ -4,7 +4,7 @@ android {
     compileSdkVersion 20
     buildToolsVersion '20.0.0'
     defaultConfig {
-        applicationId 'me.xiaopan.android.linearlinewraplayout'
+        applicationId 'me.xiaopan.android.linearlinewraplayout.sample'
         minSdkVersion 9
         targetSdkVersion 20
         versionCode 100

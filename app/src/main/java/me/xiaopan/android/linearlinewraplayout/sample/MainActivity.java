@@ -14,12 +14,10 @@
 * limitations under the License.
 */
 
-package me.xiaopan.android.linearlinewraplayout;
+package me.xiaopan.android.linearlinewraplayout.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
-
-import me.xiaopan.android.linearlinewraplayout.R;
 
 
 public class MainActivity extends Activity {
